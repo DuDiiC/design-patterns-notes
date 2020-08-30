@@ -1,6 +1,6 @@
 package cars;
 
-public class EuropeanFerrari implements Car {
+public class EuropeanFerrari implements ICar {
 
     @Override
     public void start() {

@@ -1,6 +1,6 @@
 package manufacture;
 
-import cars.Car;
+import cars.ICar;
 import cars.EuropeanAudi;
 import cars.EuropeanFerrari;
 import cars.EuropeanVolvo;
@@ -8,7 +8,7 @@ import cars.EuropeanVolvo;
 public class EuropeanCarManufacture extends CarManufacture {
 
     @Override
-    protected Car createCar(String type) {
+    protected ICar createCar(String type) {
         if(type.equals("Audi")) {
             return new EuropeanAudi();
         } else if(type.equals("Ferrari")) {

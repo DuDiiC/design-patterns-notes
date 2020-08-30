@@ -1,15 +1,15 @@
 package manufacture;
 
-import cars.Car;
+import cars.ICar;
 
 public abstract class CarManufacture {
 
     public void manufactureCar(String type) {
-        Car car = createCar(type);
+        ICar car = createCar(type);
         car.start();
         car.accelerate();
         car.stop();
     }
 
-    protected abstract Car createCar(String type);
+    protected abstract ICar createCar(String type);
 }

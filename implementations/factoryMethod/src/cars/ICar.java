@@ -1,6 +1,6 @@
 package cars;
 
-public interface Car {
+public interface ICar {
 
     void start();
     void accelerate();
