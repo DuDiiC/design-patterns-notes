@@ -1,0 +1,6 @@
+- pozwalają w abstrakcyjnej formie ująć proces tworzenia egzemplarzy klas
+- pomagają zachować niezależność systemu od sposobu tworzenia i reprezentowania obiektów
+- powtarzają się dwa motywy:
+  - wszystkie wzorce enkapsuują informacje o tym, z których klas korzysta system
+  - ukrywają proces tworzenia i składania egzemplarzy tych klas - system zna tylko interfejsy obiektów zdefiniowane w abstrakcyjnych klasach
+- dają dużą elastyczność, co to tego *co*, *jak* i *kiedy* coś jest tworzone i *kto* to robi
