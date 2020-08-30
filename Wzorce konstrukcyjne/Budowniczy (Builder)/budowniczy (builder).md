@@ -35,24 +35,25 @@ Budowniczy jest stosowany, gdy:
 
 ## Konsekwencje [GoF]
 
-### *Możliwość modyfikowania wewnętrznej reprezentacji obiektu*
+#### *Możliwość modyfikowania wewnętrznej reprezentacji obiektu*
 
 Obiekt `Builder` udostępnia obiektowi `Director` interfejs abstrakctjny do tworzenia produktu. Umożliwia on `Builder`owi ukrycie reprezentacji, wewnętrznej struktury i sposobu składowania produktu. Skoro do tworzenia produktu służy abstrakcyjny interfejs, zmiana wewnętrznej reprezentacji wymaga jedynie zdefiniowania nowego obiektu `Builder`.
 
-### *Odizolowanie reprezentacji od kodu służącego do tworzenia produktu*
+#### *Odizolowanie reprezentacji od kodu służącego do tworzenia produktu*
 
 Budowniczy pomaga zwiększyć modularność, ponieważ enkapsuuje proces tworzenia i reprezentowania obiektu złożonego. Klient nie potrzebuje żadnych informacji o klasach definiujących wewnętrzną strukturę produktu, ponieważ te klasy nie występują w interfejsie obiektu `Builder`.
 
 Każdy `ConcreteBuilder` obejmuje cały kod potrzebny do tworzenia i składania produktów określonego rodzaju. Taki kod wystarczy napisać raz, a następnie wielokrotnie go wykorzystywać w obiektach `Director` do tworzenia wielu odmian obiektu `Product` za pomocą tych samych składników.
 
-### *Większa kontrola nad procesem tworzenia*
+#### *Większa kontrola nad procesem tworzenia*
 
 Budowniczy polega na geneowaniu produktów krok po kroku, pod kontrolą obiektu `Director`. Dopiero po ukończeniu produktu `Director` odbiera go od obiektu `Builder`. Z tego powodu interfejs klasy `Builder` w większym stopniu niż inne wzorce konstrukcyjne odzwierciedla proces tworzenia produktów. Zapewnia to pełniejszą kontrolę nad samym procesem, a także i wewnętrzną strukturą gotowego produktu.
 
 ## Przykład użycia
 
+`Product` - klasa, którą chcemy zbudować - zwykle jest to rozbudowany kompozyt, dla czytelności przykładu prosta klasa.
+
 ```java
-// Product - klasa, którą chcemy zbudować
 public class House {
 
     int floors;
@@ -61,8 +62,11 @@ public class House {
 
     // setters, getters, toString
 }
+```
 
-// Director - logika inicjalizacji obiektu
+`Director` - klasa zarządzająca procesem tworzenia obiektu, zawiera jedynie metodę konstruującą, przyjmującą jako argument interfejs `Builder`a.
+
+```java
 public class HouseDirector {
 
     public void constructHouse(IHouseBuilder builder) {
@@ -72,16 +76,22 @@ public class HouseDirector {
         builder.buildGarage();
     }
 }
+```
 
-// Builder - interfejs budowniczego
+`Builder` - interfejs zawierający informacje o metodach potrzebnych do zbudowania obiektu (budowanie zwykle odbywa się stopniowo, w wielu krokach, a nie w jednej metodzie zajmującej się całą implementacją) oraz metodę zwracającą zbudowany obiekt.
+
+```java
 public interface IHouseBuilder {
     void buildFloors();
     void buildWalls();
     void buildGarage();
     House getResult();
 }
+```
 
-// ConcreteBuilder - konkretna implementacja
+`ConcreteBuilder` - konkretna implementacja budowniczego, pozwalająca na stworzenie złożonego obiektu o odpowiednich cechach, o których klient/użytkownik nie musi wiedzieć. Podane są dwa przykłady implementacji, różniące się wartościami poszczególnych składowych obiektu.
+
+```java
 public class SmallHouseBuilder implements IHouseBuilder {
 
     private House house = new House();
@@ -103,7 +113,6 @@ public class SmallHouseBuilder implements IHouseBuilder {
     }
 }
 
-// ConcreteBuilder - konkretna implementacja
 public class LargeHouseBuilder implements IHouseBuilder {
 
     private House house = new House();
@@ -124,7 +133,11 @@ public class LargeHouseBuilder implements IHouseBuilder {
         return house;
     }
 }
+```
 
+Przykład użycia zbudowanego wzorca:
+
+```java
 public class BuilderExample {
 
     public static void main(String[] args) {
