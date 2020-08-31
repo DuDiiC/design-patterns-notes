@@ -1,4 +1,4 @@
-import cars.Car;
+import cars.ICar;
 
 public class CarManufacture {
 
@@ -10,7 +10,7 @@ public class CarManufacture {
 
     public void manufactureCar(String type) {
 
-        Car car = factory.createCar(type);
+        ICar car = factory.createCar(type);
         car.start();
         car.accelerate();
         car.stop();

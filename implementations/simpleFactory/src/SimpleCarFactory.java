@@ -1,11 +1,11 @@
 import cars.Audi;
-import cars.Car;
+import cars.ICar;
 import cars.Ferrari;
 import cars.Volvo;
 
 public class SimpleCarFactory {
 
-    public Car createCar(String type) {
+    public ICar createCar(String type) {
         if ("Audi".equals(type)) {
             return new Audi();
         } else if ("Volvo".equals(type)) {
