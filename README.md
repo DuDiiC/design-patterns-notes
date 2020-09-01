@@ -13,3 +13,4 @@ Dodane implementacje:
 - Metoda fabrykująca
 - Fabryka abstrakcyjna
 - Singleton (wersja z prywatną statyczną klasą oraz z *double-check-locking pattern*)
+- Dekorator
