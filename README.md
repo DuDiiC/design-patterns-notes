@@ -1,4 +1,6 @@
-Repozytorium zawiera moje własne notatki dotyczące wzorców projektowych oraz przykładowe implementacje w języku Java.
+Repozytorium zawiera moje notatki dotyczące wzorców projektowych oraz przykładowe implementacje w języku Java.
+
+Repozytorium powstaje w celach edukacyjnych, zastosowania w kodzie dobrych praktyk.
 
 Dodane notatki:
 
